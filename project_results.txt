@@ -1,0 +1,90 @@
+BATTERY OPTIMIZATION SYSTEM
+FINAL RESULTS
+
+1. DATASET
+Real model-ready rows: 76
+Synthetic data: 40 rows
+Features monitored:
+Battery, CPU, RAM, Brightness, Charging,
+Estimated Seconds Left, Chrome, VSCode,
+WhatsApp, OneNote, WPS, Active App Count
+
+2. WORKLOAD CLASSIFICATION
+
+Real-only accuracy: 75.0%
+
+5-Fold Cross Validation:
+Mean accuracy: 76.4%
+Standard deviation: 14.7%
+
+Augmented-data accuracy: 95.8%
+
+Synthetic-augmented model tested on real-only data:
+Accuracy: 75.0%
+
+3. BATTERY PREDICTION
+
+MAE: 1.45
+R2: 0.553
+
+4. OBSERVED BATTERY DRAIN
+
+Coding:   13.27% per hour
+Light:    13.19% per hour
+Video:    16.14% per hour
+Whatsapp: 9.42% per hour
+
+Highest observed drain:
+Video - 16.14% per hour
+
+5. LIVE OPTIMIZATION EXPERIMENT
+
+Workload: Video
+Optimized condition:
+Battery Saver ON
+Brightness: 19%
+Same workload and applications
+
+Observed:
+32% -> 29%
+Duration: approximately 12 minutes 37 seconds
+Raw observed drain: approximately 14.2% per hour
+
+Historical Video baseline:
+16.14% per hour
+
+Observed difference:
+approximately 12% lower drain in the short experiment.
+
+Limitation:
+The live experiment was short and the battery percentage
+was reported in whole-number increments. Therefore the
+observed reduction should not be treated as a statistically
+validated battery-saving percentage.
+
+6. OPTIMIZER RECOMMENDATIONS
+
+Low battery:
+- Enable battery saver / power-saving mode.
+
+Video:
+- Reduce screen brightness.
+
+High RAM:
+- Close unused applications.
+
+High CPU:
+- Reduce unnecessary background processes.
+
+Normal conditions:
+- No immediate optimization required.
+
+7. SYSTEM COMPONENTS
+
+- System monitoring
+- Workload classification
+- Battery prediction
+- Battery pressure scoring
+- Recommendation engine
+- Live logging
+- Optimization experiment
