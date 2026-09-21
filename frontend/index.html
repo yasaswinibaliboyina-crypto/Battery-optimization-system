@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Battery Intelligence</title>
+
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="topbar">
+
+        <div>
+            <div class="brand">
+                <span class="brand-dot"></span>
+                BATTERY INTELLIGENCE
+            </div>
+
+            <p class="subtitle">
+                Monitor · Predict · Optimize
+            </p>
+        </div>
+
+        <div class="live-status">
+            <span class="live-dot"></span>
+            LIVE
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero-grid">
+
+            <div class="battery-card">
+
+                <div class="section-label">
+                    BATTERY LEVEL
+                </div>
+
+                <div class="battery-main">
+
+                    <div class="battery-circle">
+
+                        <div class="circle-inner">
+
+                            <span id="batteryPercent">
+                                35
+                            </span>
+
+                            <small>%</small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="battery-info">
+
+                        <div
+                            id="batteryPressure"
+                            class="status-badge"
+                        >
+                            NORMAL
+                        </div>
+
+                        <h1 id="remainingTime">
+                            2h 38m
+                        </h1>
+
+                        <p>
+                            estimated remaining
+                        </p>
+
+                        <div class="battery-bar">
+
+                            <div
+                                id="batteryFill"
+                                class="battery-bar-fill"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SYSTEM STATUS -->
+
+            <div class="system-card">
+
+                <div class="card-header">
+                    <span>SYSTEM STATUS</span>
+                    <span class="small-live">● LIVE</span>
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat">
+                        <span>CPU</span>
+                        <strong id="liveCPU">5.9%</strong>
+                    </div>
+
+                    <div class="stat">
+                        <span>RAM</span>
+                        <strong id="liveRAM">63.7%</strong>
+                    </div>
+
+                    <div class="stat">
+                        <span>WORKLOAD</span>
+                        <strong id="currentWorkload">
+                            CODING
+                        </strong>
+                    </div>
+
+                    <div class="stat">
+                        <span>DRAIN RATE</span>
+                        <strong id="drainRate">
+                            13.27% / hr
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="workload-box">
+
+                    <span class="workload-icon">◈</span>
+
+                    <div>
+                        <span class="workload-title">
+                            Detected workload
+                        </span>
+
+                        <p id="workloadDescription">
+                            VSCode activity detected. Your system is currently optimized for a coding workload.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FORECAST -->
+
+        <section class="panel forecast-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="section-label">
+                        BATTERY FORECAST
+                    </span>
+
+                    <h2>
+                        Predicted battery trajectory
+                    </h2>
+                </div>
+
+                <div class="prediction">
+                    <span>ML PREDICTION</span>
+                    <strong id="predictedBattery">
+                        24.6%
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="chart">
+
+                <div class="chart-grid"></div>
+
+                <div class="chart-label label-100">
+                    100%
+                </div>
+
+                <div class="chart-label label-50">
+                    50%
+                </div>
+
+                <div class="chart-label label-0">
+                    0%
+                </div>
+
+
+                <svg
+                    viewBox="0 0 900 260"
+                    preserveAspectRatio="none"
+                    class="forecast-svg"
+                >
+
+                    <defs>
+
+                        <linearGradient
+                            id="areaGradient"
+                            x1="0"
+                            y1="0"
+                            x2="0"
+                            y2="1"
+                        >
+
+                            <stop
+                                offset="0%"
+                                stop-color="#9caf88"
+                                stop-opacity="0.28"
+                            />
+
+                            <stop
+                                offset="100%"
+                                stop-color="#9caf88"
+                                stop-opacity="0"
+                            />
+
+                        </linearGradient>
+
+                    </defs>
+
+
+                    <path
+                        class="forecast-area"
+                        d="M0,32
+                           C130,45 190,70 300,90
+                           C420,112 500,135 610,165
+                           C720,195 790,215 900,235
+                           L900,260
+                           L0,260 Z"
+                    ></path>
+
+
+                    <path
+                        class="forecast-line"
+                        d="M0,32
+                           C130,45 190,70 300,90
+                           C420,112 500,135 610,165
+                           C720,195 790,215 900,235"
+                    ></path>
+
+
+                    <circle
+                        cx="900"
+                        cy="235"
+                        r="7"
+                        class="forecast-point"
+                    ></circle>
+
+                </svg>
+
+
+                <div class="chart-time time-start">
+                    NOW
+                </div>
+
+                <div class="chart-time time-mid">
+                    +1 HR
+                </div>
+
+                <div class="chart-time time-end">
+                    +2 HR
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- APPLICATIONS -->
+
+        <section class="panel applications-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="section-label">
+                        POWER CONSUMPTION
+                    </span>
+
+                    <h2>
+                        Active applications
+                    </h2>
+                </div>
+
+                <span class="panel-note">
+                    CPU / RAM activity
+                </span>
+
+            </div>
+
+
+            <div id="applicationsList">
+
+                <div class="app-row">
+
+                    <div class="app-name">
+                        <span class="app-number">01</span>
+                        Chrome
+                    </div>
+
+                    <div class="app-track">
+                        <div
+                            class="app-fill"
+                            style="width: 75%;"
+                        ></div>
+                    </div>
+
+                    <strong>41.3%</strong>
+
+                </div>
+
+
+                <div class="app-row">
+
+                    <div class="app-name">
+                        <span class="app-number">02</span>
+                        VS Code
+                    </div>
+
+                    <div class="app-track">
+                        <div
+                            class="app-fill"
+                            style="width: 50%;"
+                        ></div>
+                    </div>
+
+                    <strong>18.1%</strong>
+
+                </div>
+
+
+                <div class="app-row">
+
+                    <div class="app-name">
+                        <span class="app-number">03</span>
+                        WPS
+                    </div>
+
+                    <div class="app-track">
+                        <div
+                            class="app-fill"
+                            style="width: 12%;"
+                        ></div>
+                    </div>
+
+                    <strong>2.8%</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AI -->
+
+        <section class="ai-panel">
+
+            <div class="ai-icon">
+                ✦
+            </div>
+
+
+            <div class="ai-content">
+
+                <div class="section-label">
+                    AI BATTERY RECOMMENDATIONS
+                </div>
+
+                <h2>
+                    Optimize your battery
+                </h2>
+
+                <p>
+                    Recommendations are generated from your current
+                    battery, workload, CPU, RAM and application activity.
+                </p>
+
+
+                <div
+                    id="recommendationsList"
+                    class="recommendations"
+                >
+
+                    <button class="recommendation">
+                        <span class="rec-number">01</span>
+
+                        <span class="rec-text">
+                            Enable Battery Saver
+                        </span>
+
+                        <span class="rec-arrow">
+                            →
+                        </span>
+                    </button>
+
+
+                    <button class="recommendation">
+                        <span class="rec-number">02</span>
+
+                        <span class="rec-text">
+                            Reduce screen brightness
+                        </span>
+
+                        <span class="rec-arrow">
+                            →
+                        </span>
+                    </button>
+
+
+                    <button class="recommendation">
+                        <span class="rec-number">03</span>
+
+                        <span class="rec-text">
+                            Close unnecessary applications
+                        </span>
+
+                        <span class="rec-arrow">
+                            →
+                        </span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <footer>
+
+        <span>
+            BATTERY INTELLIGENCE SYSTEM
+        </span>
+
+        <span id="lastUpdated">
+            Updating...
+        </span>
+
+    </footer>
+
+</div>
+
+
+<script src="style.js"></script>
+
+</body>
+</html>
