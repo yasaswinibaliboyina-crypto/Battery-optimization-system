@@ -32,10 +32,7 @@ function updateBattery(data) {
         Math.round(battery);
 
 
-    setText(
-        "batteryPercent",
-        batteryRounded
-    );
+    setText("batteryPercent", batteryRounded);
 
 
     setText(
@@ -44,16 +41,21 @@ function updateBattery(data) {
     );
 
 
-    setText(
-        "remainingTime",
-        data.estimated_remaining_time || "--"
-    );
+    // Show Charging whenever the laptop is plugged in.
+    if (data.charging === true) {
+
+        setText("remainingTime", "Charging");
+
+    } else {
+
+        setText(
+            "remainingTime",
+            data.estimated_remaining_time || "--"
+        );
+    }
 
 
-    setWidth(
-        "batteryFill",
-        battery
-    );
+    setWidth("batteryFill", battery);
 
 
     const circle =
@@ -477,8 +479,6 @@ async function updateDashboard() {
     }
 }
 
-
-/* START */
 
 updateDashboard();
 
